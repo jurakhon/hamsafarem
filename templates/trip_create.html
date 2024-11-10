@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Create Trip{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            <div class="form-container">
+                <h2 class="form-title">Create New Trip</h2>
+                <form method="POST" enctype="multipart/form-data" class="create-form">
+                    {% csrf_token %}
+                    <div class="form-fields">
+                        {{ form.as_p }}
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="button button-primary">Create Trip</button>
+                    </div>
+                </form>
+            </div>
+        {% else %}
+            <div class="auth-message">
+                <h1>You are not logged in</h1>
+                <p>Please <a href="{% url 'login' %}" class="link">login</a> to create a new trip.</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

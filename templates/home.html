@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}HomePage{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="site-title" style="color: darkred">Welcome to my Hamsafar Webpage</h1>
+        <nav class="main-nav">
+            <ul class="main-menu">
+                <li class="menu-item"><a href="{% url 'trip_list' %}" style="color: blue">Trip List</a></li>
+                <li class="menu-item"><a href="{% url 'trip_create' %}" style="color: blue">Trip Create</a></li>
+                <li class="menu-item"><a href="{% url 'companion_list' %}" style="color: blue">Companion List</a></li>
+                <li class="menu-item"><a href="{% url 'companion_create' %}" style="color: blue">Companion Create</a></li>
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

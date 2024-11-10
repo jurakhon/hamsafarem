@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Trip List{% endblock %}
+
+{% block content %}
+            {% if user.is_authenticated %}
+
+    <div class="container">
+    {% for trip in trip_list %}
+    <div class="rows">
+        <h3>ID: {{ trip.id }}</h3>
+        <h3>User: {{ trip.user }}</h3>
+        <h3>Title: {{ trip.title }}</h3>
+        <h3>Start Location: {{ trip.start_location }}</h3>
+        <h3>End Location: {{ trip.end_location }}</h3>
+        <h3>Date: {{ trip.date }}</h3>
+        
+        <a href="{% url 'trip_detail' trip.id %}" class="btn btn-info">Detail</a>
+        <a href="{% url 'trip_update' trip.id %}" class="btn btn-info">Update</a>
+        <a href="{% url 'trip_delete' trip.id %}" class="btn btn-info">Delete</a>
+    </div>
+    {% endfor %}
+    </div>
+{% else %}
+    <h1>You are not logged in. please login to view.</h1>
+    {% endif %}
+{% endblock %}

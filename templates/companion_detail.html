@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Companion List{% endblock %}
+
+{% block content %}
+        {% if user.is_authenticated %}
+
+    
+    <div class="container">
+    <div class="rows">
+        <h3>ID: {{ companion_detail.id }}</h3>
+        <h3>User: {{ companion_detail.user }}</h3>
+        <h3>Trip: {{ companion_detail.trip }}</h3>
+        <h3>Description: {{ companion_detail.description }}</h3>
+        <h3>Create_at: {{ companion_detail.created_at }}</h3>
+       
+    </div>
+    </div>
+{% else %}
+    <h1>You are not logged in. please login to view.</h1>
+    {% endif %}
+{% endblock %}

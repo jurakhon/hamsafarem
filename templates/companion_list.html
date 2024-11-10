@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Companion List{% endblock %}
+
+{% block content %}
+            {% if user.is_authenticated %}
+
+    <div class="container">
+    {% for companion in companion_list %}
+    <div class="rows">
+        <h3>ID: {{ companion.id }}</h3>
+        <h3>User: {{ companion.user }}</h3>
+        <h3>Trip: {{ companion.trip }}</h3>
+        <h3>Description: {{ companion.description }}</h3>
+       
+        <a href="{% url 'companion_detail' companion.id %}" class="btn btn-info">Detail</a>
+        <a href="{% url 'companion_update' companion.id %}" class="btn btn-info">Update</a>
+        <a href="{% url 'companion_delete' companion.id %}" class="btn btn-info">Delete</a>
+
+    </div>
+    {% endfor %}
+        {% else %}
+    <h1>You are not logged in. please login to view.</h1>
+    {% endif %}
+    </div>
+
+{% endblock %}

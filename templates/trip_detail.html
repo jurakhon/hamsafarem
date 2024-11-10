@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Trip Detail{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if user.is_authenticated %}
+            <div class="trip-detail">
+                <h2 class="trip-title">{{ trip_detail.title }}</h2>
+                
+                <div class="trip-info">
+                    <div class="info-group">
+                        <div class="info-item">
+                            <span class="info-label">Trip ID:</span>
+                            <span class="info-value">{{ trip_detail.id }}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Organized by:</span>
+                            <span class="info-value">{{ trip_detail.user }}</span>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-item">
+                            <span class="info-label">From:</span>
+                            <span class="info-value">{{ trip_detail.start_location }}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">To:</span>
+                            <span class="info-value">{{ trip_detail.end_location }}</span>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-item">
+                            <span class="info-label">Date:</span>
+                            <span class="info-value">{{ trip_detail.date }}</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Available Seats:</span>
+                            <span class="info-value">{{ trip_detail.seats_available }}</span>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-item">
+                            <span class="info-label">Description:</span>
+                            <span class="info-value description">{{ trip_detail.description }}</span>
+                        </div>
+                    </div>
+
+                    <div class="info-group">
+                        <div class="info-item">
+                            <span class="info-label">Created:</span>
+                            <span class="info-value">{{ trip_detail.created_at }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="auth-message">
+                <h1>You are not logged in</h1>
+                <p>Please <a href="{% url 'login' %}" class="link">login</a> to view trip details.</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

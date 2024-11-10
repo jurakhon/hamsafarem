@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Companion Create{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+
+    <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create</button>
+    </form>
+
+{% else %}
+    <h1>You are not logged in. please login to view.</h1>
+    {% endif %}
+{% endblock %}
